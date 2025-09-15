@@ -101,3 +101,22 @@ Os gráficos de comparação serão salvos como arquivos `.png` na pasta.
 - **Refinamento do Pré-processamento:** Testar técnicas como Lematização ou Stemming. Além de considerar que as reviews consideram compra e pedido (palavras que aparecem mas não possuem significado para consideração de positivo/negativo)
 
 - **Técnicas de Balanceamento:** Experimentar com oversampling (SMOTE) para comparar os resultados com o `class_weight`.
+
+---
+
+## 📄 Fonte dos Dados (Data Source)
+
+Os dados utilizados neste projeto são públicos e foram disponibilizados pela Olist na plataforma Kaggle. O conjunto de dados original contém informações sobre pedidos, produtos, pagamentos e, mais importante, as avaliações dos clientes, que foram a base para esta análise.
+
+- **Dataset:** [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+
+---
+
+
+Este projeto foi desenvolvido por mim, Maurício J Souza, como uma demonstração de habilidades em ciência de dados e machine learning.
+
+Para considerações, perguntas ou oportunidades, sinta-se à vontade para entrar em contato:
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mauriciojampani/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mmjampani13@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jampani1)
