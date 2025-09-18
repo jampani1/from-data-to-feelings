@@ -1,9 +1,10 @@
 #filtrar e criar uma coluna nova com base em olist_order_reviews_dataset.csv
+#usado de base no script final
 
 import numpy as np
 import pandas as pd
 
-OR_db = 'csv/olist_order_reviews_dataset.csv'
+OR_db = './csv/olist_order_reviews_dataset.csv'
 
 try:
     # Carregamento dos dados originais

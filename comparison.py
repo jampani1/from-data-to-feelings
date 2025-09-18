@@ -131,14 +131,14 @@ def analisar_razoes_modelo(modelo, vectorizer):
     print(razoes_negativas)
 # --------------------------------------------------------------------
 
-# -------- SUGESTAO DE FUNCAO 6: COMPARAÇÃO VISUAL ------------------
+# -------- ESSE TRECHO PODERIA ESTAR NO SCRIPT LOGISTIC_REGRESSION.PY ------------------
 def comparar_modelos_visualmente(y_test, previsoes_padrao, previsoes_balanceado):
     """
     Cria e salva um gráfico comparando as Matrizes de Confusão de dois modelos.
     """
-    print("\n--- Gerando comparação visual dos modelos ---")
+    print("\n--- Gerando comparação visual do modelo de Regressão Logística com e sem balanceamento ---")
     fig, axes = plt.subplots(1, 2, figsize=(18, 7))
-    fig.suptitle('Comparação de Matrizes de Confusão', fontsize=16)
+    fig.suptitle('Comparação de Matrizes de Confusão ', fontsize=16)
 
     # Matriz para o Modelo Padrão
     cm_padrao = confusion_matrix(y_test, previsoes_padrao)
@@ -156,8 +156,8 @@ def comparar_modelos_visualmente(y_test, previsoes_padrao, previsoes_balanceado)
     axes[1].set_ylabel('Real')
     axes[1].set_xlabel('Previsto')
 
-    plt.savefig('0_balanced.png')
-    print("Gráfico de comparação salvo como '0_balanced.png'")
+    plt.savefig('./img/comparacao_logisticRegression.png')
+    print("Gráfico de comparação salvo em './img/comparacao_logisticRegression.png'")
 
 # --------  COMPARAÇÃO COM OUTROS MODELOS ------------------
 def comparar_varios_modelos(X_train, y_train, X_test, y_test):
@@ -204,8 +204,8 @@ def comparar_varios_modelos(X_train, y_train, X_test, y_test):
     plt.xticks(rotation=25, ha='right') # Melhoramos a rotação para não sobrepor
     plt.grid(axis='y', linestyle='--')
     plt.tight_layout()
-    plt.savefig('0_comparison_models.png')
-    print("Gráfico salvo como '0_comparison_models.png'")
+    plt.savefig('./img/comparacao_modelos.png')
+    print("Gráfico salvo em './img/comparacao_modelos.png'")
 
 # -------- EXECUÇÃO PRINCIPAL ------------------
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-csv_path = './csv'
+csv_path = './csv/'
 
 try:
     all_arq = os.listdir(csv_path)
@@ -21,7 +21,3 @@ try:
 
 except Exception as e:
     print(f"Ocorreu um erro: {e}")
-
-
-
-    

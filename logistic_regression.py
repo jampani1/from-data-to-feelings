@@ -58,9 +58,9 @@ try:
     df_filtrado['texto_limpo'] = df_filtrado['review_comment_message'].apply(limpar_texto)
 
     # visualização do resultado
-    # print("\n--- Verificação da Limpeza de Texto ---")
+    print("\n--- Verificação da Limpeza de Texto ---")
     # .head() para ver as colunas original e limpa, lado a lado.
-    # print(df_filtrado[['sentimento', 'review_comment_message', 'texto_limpo']].head())
+    print(df_filtrado[['sentimento', 'review_comment_message', 'texto_limpo']].head())
 
 
     # mapeando a variável alvo 'sentimento' para números (y)
@@ -96,33 +96,55 @@ try:
     print("Formato dos dados de teste (X_test_tfidf):", X_test_tfidf.shape)
     print("Os dados estão prontos para a modelagem!")
 
-    # modelo ML
-    # criando o modelo
-    modelo = LogisticRegression(random_state=42, class_weight='balanced')
+# --- TREINANDO E AVALIANDO MODELO 1: PADRÃO (SEM class_weight) ---
+    print("\n" + "="*50)
+    print("--- INICIANDO MODELO PADRÃO ---")
+    
+    # Criando o modelo padrão
+    modelo_padrao = LogisticRegression(random_state=42)
 
-    # treinando o modelo
-    print("\nTreinando o modelo de Regressão Logística...")
-    modelo.fit(X_train_tfidf, y_train)
-    print("Modelo treinado com sucesso!")
+    # Treinando o modelo padrão
+    print("\nTreinando o modelo de Regressão Logística (Padrão)...")
+    modelo_padrao.fit(X_train_tfidf, y_train)
+    print("Modelo Padrão treinado com sucesso!")
 
-    #  previsões no conjunto de teste
-    previsoes = modelo.predict(X_test_tfidf)
+    # Fazendo previsões com o modelo padrão
+    previsoes_padrao = modelo_padrao.predict(X_test_tfidf)
 
-    # avaliando a performance
-    acuracia = accuracy_score(y_test, previsoes)
-    print(f"\nAcurácia do modelo: {acuracia * 100:.2f}%")
+    # Avaliando a performance do modelo padrão
+    acuracia_padrao = accuracy_score(y_test, previsoes_padrao)
+    print(f"\nAcurácia do Modelo Padrão: {acuracia_padrao * 100:.2f}%")
+    print("\nRelatório de Classificação (Padrão):")
+    print(classification_report(y_test, previsoes_padrao, target_names=['negativo', 'positivo']))
 
-    print("\nRelatório de Classificação:")
-    # comparação das previsões com os resultados reais (y_test) para gerar o relatório.
-    # target_names nos ajuda a rotular as linhas 0 e 1 como 'negativo' e 'positivo'.
-    print(classification_report(y_test, previsoes, target_names=['negativo', 'positivo']))
+
+    # --- TREINANDO E AVALIANDO MODELO 2: BALANCEADO (COM class_weight) ---
+    print("\n" + "="*50)
+    print("--- INICIANDO MODELO BALANCEADO ---")
+    
+    # Criando o modelo balanceado
+    modelo_balanceado = LogisticRegression(random_state=42, class_weight='balanced')
+
+    # Treinando o modelo balanceado
+    print("\nTreinando o modelo de Regressão Logística (Balanceado)...")
+    modelo_balanceado.fit(X_train_tfidf, y_train)
+    print("Modelo Balanceado treinado com sucesso!")
+
+    # Fazendo previsões com o modelo balanceado
+    previsoes_balanceado = modelo_balanceado.predict(X_test_tfidf)
+
+    # Avaliando a performance do modelo balanceado
+    acuracia_balanceado = accuracy_score(y_test, previsoes_balanceado)
+    print(f"\nAcurácia do Modelo Balanceado: {acuracia_balanceado * 100:.2f}%")
+    print("\nRelatório de Classificação (Balanceado):")
+    print(classification_report(y_test, previsoes_balanceado, target_names=['negativo', 'positivo']))
 
 except FileNotFoundError:
     print(f"ERRO: Arquivo não encontrado em '{OR_db}'")
 except Exception as e:
     print(f"Ocorreu um erro inesperado: {e}")
 
-print("\n--- ANÁLISE BÔNUS: PRINCIPAIS RAZÕES PARA CADA SENTIMENTO ---")
+print("\n--- PRINCIPAIS RAZÕES PARA CADA SENTIMENTO COM BASE NO MODELO BALANCEADO ---")
 
 try:
     # pegando os nomes das palavras (features) que o TF-IDF aprendeu
@@ -131,7 +153,7 @@ try:
 
     # pegando os coeficientes (pesos) que o modelo de Regressão Logística aprendeu
     # cada coeficiente corresponde a uma palavra na mesma posição da lista acima.
-    coeficientes = modelo.coef_[0]
+    coeficientes = modelo_balanceado.coef_[0]
 
     # criando um DataFrame para visualizar as palavras e seus pesos de forma organizada
     df_razoes = pd.DataFrame({'palavra': feature_names, 'peso': coeficientes})
