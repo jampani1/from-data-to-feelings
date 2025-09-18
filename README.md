@@ -75,7 +75,7 @@ Todos os modelos foram avaliados com foco nas métricas de performance para a cl
 ### Performance do Modelo Vencedor
 A análise comparativa mostrou que, embora o SVM tenha o melhor F1-Score geral, o modelo de **Regressão Logística com `class_weight='balanced'`** apresentou o **maior Recall (0.71)** entre os modelos de alta performance. Dado que o objetivo de identificar o máximo possível de clientes insatisfeitos, este foi escolhido como o modelo final recomendado.
 
-![Gráfico de comparação entre os resultados dos modelos](./img/comparacao_modelo.png)
+![Gráfico de comparação entre os resultados dos modelos](./img/comparacao_modelos.png)
 
 ### Entendendo a definição de sentimento positivo e negativo
 Analisando os coeficientes do modelo de Regressão Logística, foi possível extrair as palavras que mais influenciam a previsão:
@@ -97,7 +97,7 @@ pessima, pessimo, recebi, comprei, nao, passou, baixa, aguardando, veio, ruim
 ## 🚀 Como Executar o Projeto
 
 ## 📄 Data Source
-Os dados utilizados neste projeto são públicos e foram disponibilizados pela Olist na plataforma Kaggle. O conjunto de dados original contém informações sobre pedidos, produtos, pagamentos e, mais importante, as avaliações dos clientes, que foram a base para esta análise.
+Os dados utilizados neste projeto são públicos e foram disponibilizados pela Olist na plataforma Kaggle. O conjunto de dados original contém informações sobre pedidos, produtos, pagamentos e, mais importante, as avaliações dos clientes, que foram a base para esta análise. <br> <br>
 **Dataset:** [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 ### Pré-requisitos
