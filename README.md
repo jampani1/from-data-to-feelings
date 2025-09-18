@@ -75,7 +75,7 @@ pessima, pessimo, recebi, comprei, nao, passou, baixa, aguardando, veio, ruim
 ### Instalação
 1. Clone este repositório:
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone [https://github.com/jampani1/from-data-to-feelings.git](https://github.com/jampani1/from-data-to-feelings.git)
    ```
 
 2. Baixe os recursos necessários da NLTK (execute uma vez em um terminal Python):
